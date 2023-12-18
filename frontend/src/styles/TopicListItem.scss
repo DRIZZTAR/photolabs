@@ -3,6 +3,12 @@
   margin-left: 24px;
 }
 
+.topic-list__item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 .topic-list__item span {
   font-size: 18px;
   text-decoration: none;

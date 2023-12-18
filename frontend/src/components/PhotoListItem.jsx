@@ -1,13 +1,14 @@
 import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
+import "../styles/PhotoFavButton.scss";
 
-const PhotoListItem = ({ id, urls, user, location }) => {
+const PhotoListItem = ({ id, urls, user, location, userFavourite, setUserFavourite }) => {
   return (
     <div className="photo-list__item" key={id}>
       <div className="photo-list__image-container">
         <img className="photo-list__image" src={urls.regular} alt="bannerPic" />
-        <PhotoFavButton />
+        <PhotoFavButton className="photo-list__fav-icon photo-list__fav-icon" id ={ id } userFavourite={ userFavourite } setUserFavourite={ setUserFavourite }/>
       </div>
       <div className="photo-list__user photo-list__user-details">
         <img className="photo-list__user-profile photo-list__user-details" src={user.profile} alt="profilePic" />

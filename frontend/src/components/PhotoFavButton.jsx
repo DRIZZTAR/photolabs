@@ -1,18 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FavIcon from './FavIcon';
 
-function PhotoFavButton() {
-  const [isFavorited, setIsFavorited] = useState(false);
+function PhotoFavButton({ id, userFavourite, setUserFavourite }) {
+  const isFavorited = userFavourite.includes(id);
 
   const handleClick = () => {
-    setIsFavorited(!isFavorited);
+    if (isFavorited) {
+      setUserFavourite(prevFavourites => {
+        const newFavourites = prevFavourites.filter(favId => favId !== id);
+        console.log('Favourites after removal:', newFavourites);
+        return newFavourites;
+      });
+    } else {
+      setUserFavourite(prevFavourites => {
+        const newFavourites = [...prevFavourites, id];
+        console.log('Favourites after addition:', newFavourites);
+        return newFavourites;
+      });
+    }
   };
 
   return (
-  <button onClick={handleClick} className="photo-list__fav-icon">
-    <FavIcon isFavorited={isFavorited} />
-  </button>
+    <button className="photo-list__fav-icon" onClick={handleClick}>
+      <FavIcon isFavorited={isFavorited} className="photo-list__fav-icon-svg" />
+    </button>
   );
-}
+};
 
 export default PhotoFavButton;
