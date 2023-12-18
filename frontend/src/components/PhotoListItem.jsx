@@ -7,7 +7,7 @@ const PhotoListItem = ({ id, urls, user, location, userFavourite, setUserFavouri
     <div className="photo-list__item" key={id}>
       <div className="photo-list__image-container">
         <img className="photo-list__image" src={urls.regular} alt="bannerPic" onClick={onPhotoClick}/>
-        <PhotoFavButton id ={ id } userFavourite={ userFavourite } setUserFavourite={ setUserFavourite }/>
+        <PhotoFavButton className="photo-list__fav-icon" id ={ id } userFavourite={ userFavourite } setUserFavourite={ setUserFavourite }/>
       </div>
       <div className="photo-list__user photo-list__user-details">
         <img className="photo-list__user-profile photo-list__user-details" src={user.profile} alt="profilePic" />

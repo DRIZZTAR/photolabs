@@ -14,10 +14,14 @@ const App = () => {
     setIsModalOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} onPhotoClick={handlePhotoClick} />
-      {isModalOpen && <PhotoDetailsModal className="photo-details-modal"/>}
+      {isModalOpen && <PhotoDetailsModal photos={photos} topics={topics} className="photo-details-modal" onClose={handleCloseModal}/>}
     </div>
   );
 };
