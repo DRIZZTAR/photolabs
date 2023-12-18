@@ -3,7 +3,7 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton({ id, userFavourite, setUserFavourite }) {
-  const isFavorited = userFavourite.includes(id);
+  const isFavorited = userFavourite && userFavourite.includes(id);
 
   const handleClick = () => {
     if (isFavorited) {

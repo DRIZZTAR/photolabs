@@ -3,10 +3,11 @@ import PhotoFavButton from "./PhotoFavButton";
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = ({ id, urls, user, location, userFavourite, setUserFavourite, onPhotoClick }) => {
+  const photo = { id, urls, user, location };
   return (
     <div className="photo-list__item" key={id}>
       <div className="photo-list__image-container">
-        <img className="photo-list__image" src={urls.regular} alt="bannerPic" onClick={onPhotoClick}/>
+        <img className="photo-list__image" src={urls.regular} alt="bannerPic" onClick={() => onPhotoClick(photo)}/>
         <PhotoFavButton className="photo-list__fav-icon" id ={ id } userFavourite={ userFavourite } setUserFavourite={ setUserFavourite }/>
       </div>
       <div className="photo-list__user photo-list__user-details">
@@ -19,5 +20,4 @@ const PhotoListItem = ({ id, urls, user, location, userFavourite, setUserFavouri
     </div>
   );
 };
-
 export default PhotoListItem;
