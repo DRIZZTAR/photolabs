@@ -6,20 +6,19 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './styles/PhotoDetailsModal.scss';
 import photos from './mocks/photos';
 import topics from './mocks/topics';
+import { useApplicationData } from './hooks/useApplicationData';
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [userFavourite, setUserFavourite] = useState([]);
-
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const {
+    state: {
+      isModalOpen,
+      selectedPhoto,
+      userFavourite,
+      handlePhotoClick,
+      handleCloseModal,
+      setUserFavourite,
+    },
+  } = useApplicationData();
 
   return (
     <div className="App">
