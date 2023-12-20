@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
@@ -14,11 +14,13 @@ const App = () => {
       isModalOpen,
       selectedPhoto,
       userFavourite,
-      handlePhotoClick,
-      handleCloseModal,
-      setUserFavourite,
     },
+    handlePhotoClick,
+    handleCloseModal,
+    setUserFavourite,
   } = useApplicationData();
+
+  console.log('Type of userFavourite:', typeof userFavourite);
 
   return (
     <div className="App">
@@ -31,14 +33,16 @@ const App = () => {
       />
       {isModalOpen && selectedPhoto && <PhotoDetailsModal 
         photos={photos} 
-        selectedPhoto={selectedPhoto} 
         onClose={handleCloseModal}
+        selectedPhoto={selectedPhoto}
         userFavourite={userFavourite}
-        setUserFavourite={setUserFavourite}
-      />}
+  setUserFavourite={setUserFavourite}
+/>}
+
     </div>
   );
 };
 
 export default App;
+
 

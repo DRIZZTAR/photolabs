@@ -2,22 +2,16 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton({ id, userFavourite, setUserFavourite }) {
-  const isFavorited = userFavourite && userFavourite.includes(id);
+function PhotoFavButton({ photo, userFavourite, setUserFavourite }) {
+  // Assuming 'photo' is an object with an 'id' property
+  const isFavorited = userFavourite.some(favPhoto => favPhoto.id === photo.id);
 
   const handleClick = () => {
-    if (isFavorited) {
-      setUserFavourite(prevFavourites => {
-        const newFavourites = prevFavourites.filter(favId => favId !== id);
-        console.log('Favourites after removal:', newFavourites);
-        return newFavourites;
-      });
+    if (photo) {
+      setUserFavourite(photo);
     } else {
-      setUserFavourite(prevFavourites => {
-        const newFavourites = [...prevFavourites, id];
-        console.log('Favourites after addition:', newFavourites);
-        return newFavourites;
-      });
+      console.error('handleClick was called without a photo');
+      console.trace();
     }
   };
 
