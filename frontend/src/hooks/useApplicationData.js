@@ -4,10 +4,18 @@ const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
   userFavourite: [],
+  photoData: [],
+  topicData: [],
 };
 
 function reducer(state, action) {
   switch (action.type) {
+    case 'SET_PHOTO_DATA':
+      return { ...state, photoData: action.payload };
+
+    case 'SET_TOPIC_DATA':
+      return { ...state, topicData: action.payload };
+
     case 'OPEN_MODAL':
       return { ...state, isModalOpen: true, selectedPhoto: action.photo };
 
@@ -50,9 +58,24 @@ export const useApplicationData = () => {
       dispatch({ type: 'SET_FAVOURITE', photo: favourites });
     } else {
       console.error('setUserFavourite was called without a photo');
-      console.trace(); // This will print a stack trace
     }
   };
+
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: 'SET_PHOTO_DATA', payload: data }))
+      .catch((error) => console.error('Error fetching photo data:', error));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }))
+      .catch((error) => console.error('Error fetching topic data:', error));
+}, []);
+  
+  
 
   return {
     state,

@@ -1,11 +1,8 @@
 import React from 'react';
-
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './styles/PhotoDetailsModal.scss';
-import photos from './mocks/photos';
-import topics from './mocks/topics';
 import { useApplicationData } from './hooks/useApplicationData';
 
 const App = () => {
@@ -14,6 +11,8 @@ const App = () => {
       isModalOpen,
       selectedPhoto,
       userFavourite,
+      photoData, // This is destructured from the state object
+      topicData, // This is destructured from the state object
     },
     handlePhotoClick,
     handleCloseModal,
@@ -25,24 +24,24 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute 
-        photos={photos} 
-        topics={topics} 
+        photos={photoData} // Use photoData directly
+        topics={topicData} // Use topicData directly
         onPhotoClick={handlePhotoClick} 
         userFavourite={userFavourite} 
         setUserFavourite={setUserFavourite}
       />
       {isModalOpen && selectedPhoto && <PhotoDetailsModal 
-        photos={photos} 
+        photos={photoData} // Use photoData directly
         onClose={handleCloseModal}
         selectedPhoto={selectedPhoto}
         userFavourite={userFavourite}
-  setUserFavourite={setUserFavourite}
-/>}
-
+        setUserFavourite={setUserFavourite}
+      />}
     </div>
   );
 };
 
 export default App;
+
 
 
