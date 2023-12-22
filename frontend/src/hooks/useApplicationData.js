@@ -16,6 +16,12 @@ function reducer(state, action) {
     case 'SET_TOPIC_DATA':
       return { ...state, topicData: action.payload };
 
+    case 'GET_PHOTOS_BY_TOPICS':
+      const topicPhotos = state.photoData.filter(photo => photo.topic_id === action.topicId);
+      return { ...state, filteredPhotoData: topicPhotos };
+      
+    case 'SET_PHOTOS_BY_TOPIC':
+      return { ...state, photoData: action.payload };
     case 'OPEN_MODAL':
       return { ...state, isModalOpen: true, selectedPhoto: action.photo };
 
@@ -61,6 +67,14 @@ export const useApplicationData = () => {
     }
   };
 
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then(response => response.json())
+      .then(data => dispatch({ type: 'SET_PHOTOS_BY_TOPIC', payload: data }))
+      .catch(error => console.error('Error fetching photos by topic:', error));
+  };
+
+
   useEffect(() => {
     fetch("/api/photos")
       .then((response) => response.json())
@@ -82,5 +96,6 @@ export const useApplicationData = () => {
     handlePhotoClick,
     handleCloseModal,
     setUserFavourite,
+    fetchPhotosByTopic,
   };
 };

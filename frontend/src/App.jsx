@@ -11,12 +11,13 @@ const App = () => {
       isModalOpen,
       selectedPhoto,
       userFavourite,
-      photoData, // This is destructured from the state object
-      topicData, // This is destructured from the state object
+      photoData,
+      topicData,
     },
     handlePhotoClick,
     handleCloseModal,
     setUserFavourite,
+    fetchPhotosByTopic,
   } = useApplicationData();
 
   console.log('Type of userFavourite:', typeof userFavourite);
@@ -24,14 +25,15 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute 
-        photos={photoData} // Use photoData directly
-        topics={topicData} // Use topicData directly
+        photos={photoData}
+        topics={topicData}
         onPhotoClick={handlePhotoClick} 
         userFavourite={userFavourite} 
         setUserFavourite={setUserFavourite}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
       {isModalOpen && selectedPhoto && <PhotoDetailsModal 
-        photos={photoData} // Use photoData directly
+        photos={photoData}
         onClose={handleCloseModal}
         selectedPhoto={selectedPhoto}
         userFavourite={userFavourite}
