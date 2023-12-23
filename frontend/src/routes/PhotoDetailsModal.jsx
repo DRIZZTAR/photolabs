@@ -26,7 +26,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
           <img className="photo-details-modal__image" src={urls.regular} alt={`Photo by ${user.name}`} />
           <PhotoFavButton photo={selectedPhoto} userFavourite={userFavourite} setUserFavourite={setUserFavourite} />
         </div>
-        <div className="photo-details-modal__info-header-container">
+        <div className="photo-details-modal__info-header-container photo-details-modal__top-bar">
           <div className="photo-details-modal__photographer-details">
             <img className="photo-details-modal__photographer-profile" src={user.profile} alt={`${user.name}'s Profile`} />
             <div className="photo-details-modal__photographer-info-container">
