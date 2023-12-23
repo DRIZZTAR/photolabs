@@ -22,6 +22,7 @@ function reducer(state, action) {
       
     case 'SET_PHOTOS_BY_TOPIC':
       return { ...state, photoData: action.payload };
+      
     case 'OPEN_MODAL':
       return { ...state, isModalOpen: true, selectedPhoto: action.photo };
 
@@ -67,35 +68,35 @@ export const useApplicationData = () => {
     }
   };
 
+  
+  useEffect(() => {
+    fetch("/api/photos")
+    .then((response) => response.json())
+    .then((data) => dispatch({ type: 'SET_PHOTO_DATA', payload: data }))
+    .catch((error) => console.error('Error fetching photo data:', error));
+  }, []);
+  
+  useEffect(() => {
+    fetch("/api/topics")
+    .then((response) => response.json())
+    .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }))
+    .catch((error) => console.error('Error fetching topic data:', error));
+  }, []);
+  
   const fetchPhotosByTopic = (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
       .then(response => response.json())
       .then(data => dispatch({ type: 'SET_PHOTOS_BY_TOPIC', payload: data }))
       .catch(error => console.error('Error fetching photos by topic:', error));
   };
-
-
-  useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: 'SET_PHOTO_DATA', payload: data }))
-      .catch((error) => console.error('Error fetching photo data:', error));
-  }, []);
-
-  useEffect(() => {
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }))
-      .catch((error) => console.error('Error fetching topic data:', error));
-}, []);
   
   
-
   return {
     state,
     handlePhotoClick,
     handleCloseModal,
     setUserFavourite,
     fetchPhotosByTopic,
+    useApplicationData,
   };
 };

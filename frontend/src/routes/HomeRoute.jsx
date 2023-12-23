@@ -9,7 +9,11 @@ const HomeRoute = ({ photos, topics, onPhotoClick, userFavourite, setUserFavouri
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} userFavourite={userFavourite} fetchPhotosByTopic={fetchPhotosByTopic} />
+      <TopNavigation 
+      topics={topics}
+      userFavourite={userFavourite}
+      fetchPhotosByTopic={fetchPhotosByTopic}
+      />
       <PhotoList
         photos={photos} 
         userFavourite={userFavourite} 

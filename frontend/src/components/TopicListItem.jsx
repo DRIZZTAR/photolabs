@@ -10,7 +10,6 @@ const TopicListItem = ({ id, slug, title, onClick }) => {
 
   return (
     <div className="topic-list__item">
-      {/* Use onClick handler instead of href for navigation */}
       <a href={`/${slug}`} key={id} onClick={handleClick}>
         <span>{title}</span>
       </a>
