@@ -50,10 +50,7 @@ function reducer(state, action) {
 
 
 export const useApplicationData = () => {
-  const [state, dispatch] = useReducer(reducer, initialState, () => {
-    const localData = localStorage.getItem('photoAppData');
-    return localData ? JSON.parse(localData) : initialState;
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handlePhotoClick = (photo) => {
     dispatch({ type: 'OPEN_MODAL', photo });
@@ -85,10 +82,6 @@ export const useApplicationData = () => {
     .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }))
     .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('photoAppData', JSON.stringify(state));
-  }, [state]);
   
   const fetchPhotosByTopic = (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
