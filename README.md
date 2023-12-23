@@ -1,6 +1,6 @@
 # Welcome to PhotoLabs 📸
 
-![PhotoLabs Preview](/src/assets/readMe1.jpeg)
+![PhotoLabs Preview](frontend/src/assets/readMe1.jpeg)
 
 Hello there! If you're reading this, you've probably stumbled upon our little gem, PhotoLabs. It's not just any photo viewing app; it's a labor of love, a testament to the beauty of photographs, and a playground for React enthusiasts like us! Let's dive into what makes PhotoLabs a fantastic project and how you can get it up and running.
 
@@ -10,8 +10,8 @@ PhotoLabs is a single-page application (SPA) built with React, created by a bunc
 
 ### Features at a Glance
 
-![PhotoLabs Features](/src/assets/readMe2.jpeg)
-
+![PhotoLabs Features](frontend/src/assets/readMe2.jpeg)
+z
 - **View Photos**: Dive into a sea of images! From the homepage, you're one click away from discovering an array of stunning photos.
 - **Explore Topics**: Got a theme in mind? Navigate through different photo categories and let your curiosity guide you.
 - **Enlarge and Enjoy**: Click on any photo to see its larger version and get lost in its details.
