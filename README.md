@@ -42,7 +42,15 @@ npm install
 
 ### Running PhotoLabs
 #### Backend
-For the backend, check out backend/readme for detailed setup instructions. Then:
+For the backend, copy the `.env.example` file to `.env.development` and fill in the necessary PostgreSQL configuration. The `node-postgres` library uses these environment variables by default.
+
+```
+PGHOST=localhost
+PGUSER=labber
+PGDATABASE=photolabs_development
+PGPASSWORD=labber
+PGPORT=5432
+```
 
 ```sh
 cd backend
