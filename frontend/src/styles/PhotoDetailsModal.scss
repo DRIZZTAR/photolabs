@@ -60,8 +60,8 @@
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
-  border-top: 1px solid #000; // Add this line
-  padding-top: 24px; // And this line
+  border-top: 1px solid #000;
+  padding-top: 24px;
 }
 
 .photo-details-modal__photographer-location {
@@ -102,8 +102,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: for dimming background */
-  z-index: 10; /* Ensure it's above other page content */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 

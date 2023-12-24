@@ -7,10 +7,9 @@ import PhotoList from '../components/PhotoList';
 import FavouritesPage from '../components/FavItems'; // Import FavouritesPage
 
 const HomeRoute = ({ photos, topics, onPhotoClick, userFavourite, setUserFavourite, fetchPhotosByTopic }) => {
-  // State to manage visibility of the FavouritesPage
+
   const [showFavourites, setShowFavourites] = useState(false);
 
-  // Function to toggle the FavouritesPage visibility
   const toggleFavourites = () => setShowFavourites(prev => !prev);
 
   return (
@@ -19,10 +18,8 @@ const HomeRoute = ({ photos, topics, onPhotoClick, userFavourite, setUserFavouri
         topics={topics}
         userFavourite={userFavourite}
         fetchPhotosByTopic={fetchPhotosByTopic}
-        onFavClick={toggleFavourites} // Pass the toggle function
+        onFavClick={toggleFavourites}
       />
-      {/* Conditional rendering of FavouritesPage based on showFavourites state */}
-      {showFavourites && <FavouritesPage userFavourite={userFavourite} />}
       <PhotoList
         photos={photos} 
         userFavourite={userFavourite} 

@@ -16,12 +16,12 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
 
   const similarPhotosArray = selectedPhotoWithSimilar.similar_photos || [];
 
-  const modalOverlayRef = useRef(null); // Define modalOverlayRef
+  const modalOverlayRef = useRef(null);
   const modalRef = useRef(null);
 
   const handleClickOutside = (event) => {
     if (modalOverlayRef.current && event.target === modalOverlayRef.current) {
-      onClose(); // Close the modal if the click is on the overlay
+      onClose();
     }
   };
 
@@ -33,7 +33,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [selectedPhoto]); // Ensure useEffect is triggered when selectedPhoto changes
+  }, [selectedPhoto]);
   
 
   return (
