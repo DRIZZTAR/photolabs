@@ -82,6 +82,7 @@ export const useApplicationData = () => {
     .then((data) => dispatch({ type: 'SET_TOPIC_DATA', payload: data }))
     .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
+
   
   const fetchPhotosByTopic = (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)

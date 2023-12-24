@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import '../styles/PhotoDetailsModal.scss';
@@ -16,8 +16,17 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
 
   const similarPhotosArray = selectedPhotoWithSimilar.similar_photos || [];
 
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedPhoto && modalRef.current) {
+      modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [selectedPhoto]);
+  
+
   return (
-    <div className="photo-details-modal">
+    <div className="photo-details-modal" ref={modalRef}>
       <button className="photo-details-modal__close-button" onClick={onClose}>
         <img src={closeSymbol} alt="Close" />
       </button>
