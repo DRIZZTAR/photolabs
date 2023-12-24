@@ -4,8 +4,8 @@ import PhotoListItem from './PhotoListItem';
 const FavouritesPage = ({ userFavourite }) => {
   return (
     <div className="favourites-page">
-      {userFavourite.map(id => (
-        <PhotoListItem key={id} id={id} />
+      {userFavourite.map(photo => (
+        <PhotoListItem key={photo.id} photo={photo} />
       ))}
     </div>
   );

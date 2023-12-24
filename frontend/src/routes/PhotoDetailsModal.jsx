@@ -16,21 +16,33 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
 
   const similarPhotosArray = selectedPhotoWithSimilar.similar_photos || [];
 
+  const modalOverlayRef = useRef(null); // Define modalOverlayRef
   const modalRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (modalOverlayRef.current && event.target === modalOverlayRef.current) {
+      onClose(); // Close the modal if the click is on the overlay
+    }
+  };
 
   useEffect(() => {
     if (selectedPhoto && modalRef.current) {
       modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [selectedPhoto]);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [selectedPhoto]); // Ensure useEffect is triggered when selectedPhoto changes
   
 
   return (
-    <div className="photo-details-modal" ref={modalRef}>
-      <button className="photo-details-modal__close-button" onClick={onClose}>
-        <img src={closeSymbol} alt="Close" />
-      </button>
-      <div className="photo-list__item" key={id} style={{ border: 'none' }}>
+    <div className="photo-details-modal-overlay" ref={modalOverlayRef}>
+      <div className="photo-details-modal" ref={modalRef}>
+        <button className="photo-details-modal__close-button" onClick={onClose}>
+          <img src={closeSymbol} alt="Close" />
+        </button>
+        <div className="photo-list__item" key={id} style={{ border: 'none' }}>
         <div className="photo-list__image-container">
           <img className="photo-details-modal__image" src={urls.regular} alt={`Photo by ${user.name}`} />
           <PhotoFavButton photo={selectedPhoto} userFavourite={userFavourite} setUserFavourite={setUserFavourite} />
@@ -56,6 +68,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
           <p>No similar photos available.</p>
         )}
       </div>
+    </div>
     </div>
   );
 };
