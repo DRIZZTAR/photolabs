@@ -39,20 +39,22 @@ npm install
 cd ../backend
 npm install
 ```
+
 ### Running PhotoLabs
+#### Backend
+For the backend, check out backend/readme for detailed setup instructions. Then:
+
+```sh
+cd backend
+npm start
+```
+
 #### Frontend
 
 Start the frontend server to bring the PhotoLabs client to life:
 
 ```sh
 cd frontend
-npm start
-```
-#### Backend
-For the backend, check out backend/readme for detailed setup instructions. Then:
-
-```sh
-cd backend
 npm start
 ```
 
