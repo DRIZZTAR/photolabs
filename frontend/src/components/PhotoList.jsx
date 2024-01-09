@@ -13,7 +13,6 @@ const PhotoList = ({ userFavourite, setUserFavourite, onPhotoClick, photos }) =>
           userFavourite={userFavourite} 
           setUserFavourite={setUserFavourite}
           onPhotoClick={onPhotoClick}
-          photo={photo} 
         />
       ))}
     </div>

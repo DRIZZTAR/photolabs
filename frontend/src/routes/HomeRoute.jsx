@@ -4,11 +4,8 @@ import '../styles/HomeRoute.scss';
 import '../styles/PhotoList.scss';
 import TopNavigation from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
-import FavouritesPage from '../components/FavItems'; // Import FavouritesPage
 
 const HomeRoute = ({ photos, topics, onPhotoClick, userFavourite, setUserFavourite, fetchPhotosByTopic }) => {
-
-  const [showFavourites, setShowFavourites] = useState(false);
 
   const toggleFavourites = () => setShowFavourites(prev => !prev);
 

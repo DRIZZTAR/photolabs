@@ -9,7 +9,10 @@ const TopicList = ({ fetchPhotosByTopic, topics }) => {
         <TopicListItem 
           key={topic.id} 
           {...topic} 
-          onClick={() => fetchPhotosByTopic(topic.id)}
+          onClick={(e) => {
+            e.preventDefault();
+            fetchPhotosByTopic(topic.id);
+          }}
         />
       ))}
     </div>

@@ -2,15 +2,10 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = ({ id, slug, title, onClick }) => {
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    onClick(id);
-  };
-
   return (
     <div className="topic-list__item">
-      <a href={`/${slug}`} key={id} onClick={handleClick}>
+      <a href={`/${slug}`} key={id} onClick={onClick}>
+        {console.log('TopicListItem.jsx: slug:', slug)}
         <span>{title}</span>
       </a>
     </div>
