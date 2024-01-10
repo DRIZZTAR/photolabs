@@ -1,11 +1,11 @@
 .photo-list__image-container {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .photo-list__fav-icon {
   position: relative;
-  top: 8px;
-  right: 8px;
   cursor: pointer;
   border-width: 0.1px;
   background-color: #EEEEEE;

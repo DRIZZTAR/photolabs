@@ -61,26 +61,26 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
         <button className="photo-details-modal__close-button" onClick={onClose}>
           <img src={closeSymbol} alt="Close" />
         </button>
-        {/*Large modal image*/}
-        <div className="photo-list__item" key={id} style={{ border: 'none' }}>
-        <div className="photo-list__image-container">
-          <img className="photo-details-modal__image" src={urls.regular} alt={`Photo by ${user.name}`} />
+  
+        <div className="photo-details-modal__image-container">
           <PhotoFavButton 
             photo={selectedPhoto} 
             userFavourite={userFavourite} 
             setUserFavourite={setUserFavourite} 
           />
-        </div>
-        {/*Photographer details of selected image */}
-        <div className="photo-details-modal__top-bar">
-          <div className="photo-details-modal__photographer-details">
-            <img className="photo-details-modal__photographer-profile" src={user.profile} alt={`${user.name}'s Profile`} />
-            <div className="photo-details-modal__photographer-info-container">
-              <div className="photo-details-modal__photographer-info">{user.username}</div>
-              <div className="photo-details-modal__photographer-info photo-details-modal__photographer-location">{location.city}, {location.country}</div>
-            </div>
+          <div className="photo-list__item" key={id} style={{ border: 'none' }}>
+            <img className="photo-details-modal__image" src={urls.regular} alt={`Photo by ${user.name}`} />
           </div>
         </div>
+        <div className="photo-details-modal__photographer-details">
+          <img className="photo-details-modal__photographer-profile" src={user.profile} alt={`${user.name}'s Profile`} />
+          <div className="photo-details-modal__photographer-info-container">
+            <div className="photo-details-modal__photographer-info">{user.username}</div>
+            <div className="photo-details-modal__photographer-info photo-details-modal__photographer-location">{location.city}, {location.country}</div>
+          </div>
+        </div>
+        
+  
         <h2 className='photo-details-modal__header'>Similar Photos</h2>
         {similarPhotosArray.length > 0 ? (
           <PhotoList
@@ -94,8 +94,8 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
         )}
       </div>
     </div>
-    </div>
   );
+  
 };
 
 // PropType validation for robustness and documentation
