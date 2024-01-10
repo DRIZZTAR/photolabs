@@ -20,8 +20,6 @@ const App = () => {
     fetchPhotosByTopic,
   } = useApplicationData();
 
-  console.log('Type of userFavourite:', typeof userFavourite);
-
   return (
     <div className="App">
       <HomeRoute 
