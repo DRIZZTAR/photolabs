@@ -1,5 +1,6 @@
 import { useReducer,useEffect } from 'react';
 
+// Initial state for the application data
 const initialState = {
   isModalOpen: false,
   selectedPhoto: null,
@@ -8,6 +9,7 @@ const initialState = {
   topicData: [],
 };
 
+// Reducer function to manage the state of the application
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_PHOTO_DATA':
@@ -48,7 +50,7 @@ function reducer(state, action) {
   }
 }
 
-
+// Custom hook to manage and provide application data
 export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -68,7 +70,7 @@ export const useApplicationData = () => {
     }
   };
 
-  
+  // Fetch photo data on component mount
   useEffect(() => {
     fetch("/api/photos")
     .then((response) => response.json())
@@ -76,6 +78,7 @@ export const useApplicationData = () => {
     .catch((error) => console.error('Error fetching photo data:', error));
   }, []);
   
+  // Fetch topic data on component mount
   useEffect(() => {
     fetch("/api/topics")
     .then((response) => response.json())
@@ -83,7 +86,7 @@ export const useApplicationData = () => {
     .catch((error) => console.error('Error fetching topic data:', error));
   }, []);
 
-  
+  // Function to fetch photos by topic
   const fetchPhotosByTopic = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
       .then(response => response.json())

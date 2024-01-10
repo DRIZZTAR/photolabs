@@ -5,8 +5,15 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import './styles/PhotoDetailsModal.scss';
 import { useApplicationData } from './hooks/useApplicationData';
 
+
+/**
+ * App Component
+ * This is the root component of the application. It manages the application state,
+ * routing, and renders the main UI components.
+ */
 const App = () => {
   const {
+    // Destructuring state and functions from the custom hook
     state: {
       isModalOpen,
       selectedPhoto,
@@ -22,6 +29,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* HomeRoute component that handles the display of photos and topics */}
       <HomeRoute 
         photos={photoData}
         topics={topicData}
@@ -30,6 +38,7 @@ const App = () => {
         setUserFavourite={setUserFavourite}
         fetchPhotosByTopic={fetchPhotosByTopic}
       />
+      {/* Conditionally rendering the PhotoDetailsModal if a modal is to be shown */}
       {isModalOpen && selectedPhoto && <PhotoDetailsModal 
         photos={photoData}
         onClose={handleCloseModal}
