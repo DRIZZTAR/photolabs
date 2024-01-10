@@ -8,6 +8,19 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
 
+/**
+ * PhotoDetailsModal Component
+ * Displays a modal with detailed view of the selected photo along with similar photos.
+ *
+ * @param {Object} props - Component props
+ * @param {Function} props.onClose - Function to close the modal
+ * @param {Object} props.selectedPhoto - Photo object to display in the modal
+ * @param {Array} props.userFavourite - Array of user's favourite photos
+ * @param {Function} props.setUserFavourite - Function to update user's favourite photos
+ * @param {Function} props.onPhotoClick - Function to handle photo click event
+ * @param {Array} props.photos - Array of all photos
+ */
+
 const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavourite, onPhotoClick, photos }) => {
 
   const selectedPhotoWithSimilar = photos.find(photo => photo.id === selectedPhoto.id);
@@ -25,6 +38,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
     }
   };
 
+  // Effect to handle click outside modal and modal display behavior
   useEffect(() => {
     if (selectedPhoto && modalRef.current) {
       modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -42,12 +56,18 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
         <button className="photo-details-modal__close-button" onClick={onClose}>
           <img src={closeSymbol} alt="Close" />
         </button>
+        {/*Large modal image*/}
         <div className="photo-list__item" key={id} style={{ border: 'none' }}>
         <div className="photo-list__image-container">
           <img className="photo-details-modal__image" src={urls.regular} alt={`Photo by ${user.name}`} />
-          <PhotoFavButton photo={selectedPhoto} userFavourite={userFavourite} setUserFavourite={setUserFavourite} />
+          <PhotoFavButton 
+            photo={selectedPhoto} 
+            userFavourite={userFavourite} 
+            setUserFavourite={setUserFavourite} 
+          />
         </div>
-        <div className="photo-details-modal__info-header-container photo-details-modal__top-bar">
+        {/*Photographer details of selected image */}
+        <div className="photo-details-modal__top-bar">
           <div className="photo-details-modal__photographer-details">
             <img className="photo-details-modal__photographer-profile" src={user.profile} alt={`${user.name}'s Profile`} />
             <div className="photo-details-modal__photographer-info-container">
@@ -56,7 +76,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
             </div>
           </div>
         </div>
-        <h2>Similar Photos</h2>
+        <h2 className='photo-details-modal__header'>Similar Photos</h2>
         {similarPhotosArray.length > 0 ? (
           <PhotoList
             photos={similarPhotosArray}
@@ -73,6 +93,7 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
   );
 };
 
+// PropType validation for robustness and documentation
 PhotoDetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   selectedPhoto: PropTypes.object.isRequired,
