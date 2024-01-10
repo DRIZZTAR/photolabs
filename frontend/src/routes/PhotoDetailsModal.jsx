@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import '../styles/PhotoDetailsModal.scss';
-import '../styles/PhotoList.scss';
-import '../styles/PhotoListItem.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
