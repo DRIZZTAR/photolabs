@@ -23,4 +23,4 @@ const FavBadge = ({ userFavourite, onFavClick }) => {
   );
 };
 
-export default FavBadge;w
+export default FavBadge;

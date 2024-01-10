@@ -38,13 +38,20 @@ const PhotoDetailsModal = ({ onClose, selectedPhoto, userFavourite, setUserFavou
 
   // Effect to handle click outside modal and modal display behavior
   useEffect(() => {
+      // Scroll the modal into view when the selected photo changes
     if (selectedPhoto && modalRef.current) {
-      modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Using setTimeout to ensure the scroll action happens after the modal is updated with the new photo
+      setTimeout(() => {
+        modalRef.current.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 0);
     }
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+      return () => {
+       document.removeEventListener('mousedown', handleClickOutside);
+      };
   }, [selectedPhoto]);
   
 
